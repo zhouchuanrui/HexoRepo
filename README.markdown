@@ -10,4 +10,5 @@ $ npm install hexo-renderer-stylus --save
 $ npm install hexo-renderer-marked --save          
 ```
 
-安卓这三个东西，然后才可以用。
+安装这三个东西，然后才可以用。
+
