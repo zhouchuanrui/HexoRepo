@@ -12,3 +12,10 @@ $ npm install hexo-renderer-marked --save
 
 安装这三个东西，然后才可以用。
 
+-----
+
+更新：
+
+在`.gitignore`文件中去掉`node\_modules/`之后，应该就不用安装上的这三个东西了。
+
+
