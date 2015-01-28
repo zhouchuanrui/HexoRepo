@@ -1,7 +1,7 @@
 title: Learning Python the Hard Way笔记
 Status: Public
 Tags: 
-date: 2014-4-15 20:56:41
+date: 2013-4-15 20:56:41
 ---
 
 [TOC]
