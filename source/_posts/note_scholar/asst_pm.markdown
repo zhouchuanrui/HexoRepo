@@ -162,12 +162,6 @@ struct param_buf
 
 # 参考文献
 
-面向电磁式互感器的智能变电站分布式测试系统研制	吴杰	电子科技大学	2013-3-25
-智能化变电站全场景试验系统的设计与实现	谢强强	电子科技大学	 2012-04-01	 硕士
-基于无线同步技术的智能变电站全场景试验系统	井实; 黄琦; 甄威; 王彪	电力系统自动化	 2013-01-25	 期刊
-面向智能变电站全场景试验的无线时钟同步方法	井实; 黄琦; 甄威; 吴杰	电力系统自动化	 2013-05-10	 期刊
-基于ARM和FPGA的智能变电站全场景试验装置硬件平台设计	吴杰; 黄琦; 井实; 王彪; 张华	四川电力技术	 2012-04-20	 期刊
-智能变电站二次系统试验方法综述	王彪; 甄威; 张华; 黄琦; 井实; 胡凤凯; 吴杰	四川电力技术	 2012-04-20	 期刊	
 TMS320F2833x Flash API August 14, 2008
 Running an Application from Internal Flash Memory on the TMS320F28xxx DSP SPRA958L – January 2013   Application Report 
 Copying Compiler Sections From Flash to RAM on the TMS320F28xxx DSCs SPRAAU8 – March 2008  Application Report 

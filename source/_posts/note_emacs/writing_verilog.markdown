@@ -1,4 +1,4 @@
-title: 我的Verilog HDL代码快速编辑坏境
+title: 我的Verilog HDL代码快速编辑环境
 Status: Public
 Tags: 
 Date: 2015-1-9 23:18:52
@@ -102,7 +102,7 @@ snipmate的一个好处是可以很方便的按照语法规则自定义Snippet�
 
 # 其他
 
-到这里为止，其实已经可以算是完结了。但是还是有点奇淫巧技要分享下，说不定能带来额外的启发。
+到这里为止，其实已经可以算是完结了。但是还是有点奇技淫巧要分享下，说不定能带来额外的启发。
 
 如果你电脑里面有Python，拿Windows下的Python 3.x来说好了，Vim里面有一个很强大的隐藏功能。在你的Vim里面输入下面的Python代码：
 
@@ -158,5 +158,5 @@ F:\hexo\source\_posts\note_emacs>dir
 F:\hexo\source\_posts\note_emacs>
 ```
 
-这个功能真是屌，只是我还不知道要怎么用好，在这里抛砖引玉一下，希望能激发到大家的灵感。
+这个功能真是屌，在这里抛砖引玉一下，希望能激发到大家的灵感。
 

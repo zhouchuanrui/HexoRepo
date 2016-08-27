@@ -26,7 +26,9 @@
   margin: 0 12px 1em
 
 .article-header
-  padding: article-padding article-padding 0
+  //padding: article-padding article-padding 0
+  padding: 40px 40px
+  font-size: 1.4em
 
 .article-title
   text-decoration: none
@@ -42,12 +44,10 @@
   @extend $base-style
   clearfix()
   color: color-default
-  padding: 0 article-padding
+  padding: 0 40px
   p, table
     line-height: line-height
-    margin: line-height 0
-  h1, h2, h3, h4, h5, h6
-    font-weight: bold
+    margin: 0.5em 0
   h1, h2, h3, h4, h5, h6
     line-height: line-height-title
     margin: line-height-title 0
