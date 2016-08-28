@@ -1,7 +1,7 @@
 title: 我的Verilog HDL代码快速编辑环境
 Status: Public
 Tags: 
-Date: 2015-1-9 23:18:52
+date: 2015-1-9 23:18:52
 ---
 
 [TOC]
