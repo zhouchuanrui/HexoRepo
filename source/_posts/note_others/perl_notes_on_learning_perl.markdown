@@ -1,5 +1,5 @@
 title: 《Learning PERL》笔记
-date: 2015-4-28 11:16:23
+date: 2014-11-28 11:16:23
 ---
 
 [TOC]
@@ -456,8 +456,6 @@ my @three_scores = @score{qw/barney fred dino/};
 ```
 
 要注意哈希的上下文.
-
-
 
 
 

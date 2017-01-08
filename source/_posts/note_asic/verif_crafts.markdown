@@ -1,14 +1,14 @@
 title: Verification匠心
 Status: Public
 Tags: Makefile 
-date: 2015-7-27 22:04:39
+date: 2016-7-27 22:04:39
 ---
 
 [TOC]
 
 这篇笔记用于记录一些验证工作过程中的一些有益的小技巧和总结.
 
-# Makefile中空变量的妙用
+# Makefile中空变量有大用
 
 做数字验证的时候, 仿真器的编译和运行需要很多的编译运行参数, 一般Makefile里面就会写了很多东西了. 不过, 大多数时候, 在验证平台的调试阶段, 你会需要添加很多额外的编译选项和运行选项比如编译时添加`-debug_all`编译为行调试模式, 运行时添加`+ntb_opt random_seed=<n>`指定随机种子运行. 另外, UVM也引入了很多的运行参数. 
 
@@ -101,7 +101,7 @@ endpackage
 
 1. 把include文件集中到一处显得比较清晰, 更容易复用;
 1. 做引用的时候`import`比`include`要安全, 因为前者多次引用完全没问题, 后者的定义文件里如果没写`ifndef`编译预处理不小心出现多处`include`的话是会编译出错的;
-1. Package创建了一个独立的编译单元, 仿真器在做增量编译的时候使用Package会获得一点点性能上的提升, 此外要注意的是`module`和`interface`是天然的独立编译单元, 按照这个规范, top module和dut interface文件都应该以`.sv`结尾.
+1. Package创建了一个独立的编译单元, 仿真器在做增量编译的时候使用Package会获得一点点性能上的提升. 要注意`module`和`interface`是天然的独立编译单元, 是不可以include到Package里面的语法结构, 按照这个规范, top module和dut interface文件都应该以`.sv`结尾.
 
 此外要注意的是, 虽然有`import`语法用来做显式引用(而且使用UVM的时候就是这么用的), 但是其实用`package_name::resource`的方式更安全. 比如说你的多个Package里面都定义了共用的枚举, 而这些枚举恰好有重名, 然后这些同名的枚举是不同的值, 这样你在用`import package_name::*;`的时候就可能会有枚举冲突, 而用`package_name::enum_item`这种格式就不会有问题. 
 
@@ -128,7 +128,7 @@ end
 
 直接使用`UVM_TESTNAME`这个用于`run_test`的这个value plusargs再加上`.fsdb`后缀拼接成文件名, 然后再dump, 实现了fsdb文件和testcase的绑定. 当然这里也可以用单独的value pulsagrs来指定fsdb文件名. 中间的`#0.1`延时是考虑到运行的时候有可能打错case的名字, 这个时候`run_test`先运行报错退出, 就不会生成错误的fsdb文件了.
 
-其他的诸如, 控制一个sequence的运行次数, 控制是否进行覆盖率采集, 控制scoreboard的信息输出到STD还是文件等, 都可以用自定义的plusargs方便的实现. 这个比起定义不同的`uvm_test`使用`config_class`来生成不同的验证平台来, 要方便多了.
+其他的诸如, 控制一个sequence的运行次数, 控制是否进行覆盖率采集, 控制scoreboard的信息输出到STDOUT还是文件等, 都可以用自定义的plusargs方便的实现. 这个比起定义不同的`uvm_test`使用`config_class`来生成不同的验证平台来, 要方便多了.
 
 除了plusargs之外, 宏也是实现更改验证平台行为的一大利器. 注意到第一行的`ifndef`编译预处理命令了吗? 也就是说编译时添加宏`+define+NO_DUMP`可以去掉这个initial块. 其实要实现控制dump波形文件的开关的话, 直接用`$test$plusargs`才是更好的方案:
 

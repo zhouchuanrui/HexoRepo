@@ -1,18 +1,18 @@
 title: UVM源码探索之Factory(上篇)
 Status: Public
 Tags: UVM 
-date: 2015-8-27 22:04:39
+date: 2016-8-27 22:04:39
 ---
 
 [TOC]
 
-Factory机制是UVM的一个重要的底层机制, 内容不多, 源码来讲大概2000行左右, 相对sequence, 寄存器模型, TLM这些大部头来讲很少了. 配合这篇笔记再加上源码我估计一个下午就可以了解掌握的差不多了. 
+这篇笔记是我在学习UVM的Factory源码的时候的一些记录跟总结, 整理为分为上下两篇. 上篇讲述的是`uvm_object`的Factory实现, 下篇再讲一些UVM Factory的其他功能. 使用的源码是`uvm-1.2`. 
 
-这篇笔记的是我在学习UVM的Factory源码的时候的一些记录跟总结, 整理为分为上下两篇. 上篇讲述的是`uvm_object`的Factory实现, 下篇再讲一些UVM Factory的其他功能. 使用的源码是`uvm-1.2`. 这篇笔记写的很浅, 讲的比较细很容易看懂, 要是读者有OOP的基础(多态和泛型)那就更轻松了. 
+Factory机制是UVM的一个重要的底层机制, 内容不多, 源码规模来讲2000行上下. 相对sequence, 寄存器模型, TLM这些大部头来讲, Factory规模小, 独立性强, 是个很好的UVM学习源码的切入点. 
 
 # 我眼中的Factory
 
-讲述工厂模式的书会告诉你, 工厂模式可以让你动态的生成对象(这其实是句废话啦, 对象其实都是动态也就是运行时生成的嘛), 比如用字符串为参数生成指定的对象.
+讲述工厂模式的书会告诉你, 工厂模式可以让你动态的生成对象(这其实是句废话啦, 对象其实都是动态也就是运行时生成的), 比如用字符串为参数生成指定的对象.
 
 根据这个描述, UVM的Factory在我想象中是这样的:
 
@@ -580,5 +580,5 @@ endfunction
 1. `uvm_factory`中实际注册的不是`user_object`对象, 而是用于生成`user_object`对象的`uvm_object_registry#(user_object, "uvm_object")`对象;
 1. 用Factory创建对象的调用栈为: `user_object::type_id::create("name")`-->`uvm_object_registry#(user_object, "uvm_object")::create("name")`-->`factory.create_object_by_type()`, 最后返回了对象.
 
-总的说来, UVM的Factory是通过多态和泛型来实现的, 跟普通的Factory比起来要复杂很多. 平心而论, 如果不需要支持重载的话, Factory实现的起来会简单很多. 我在最前面实现了一个"乞丐版"Factory, 大家可以考虑下加入泛型特性, 写出一个比较实用的Factory来, 不考虑重载的话应该也是挺简单的.
+总的说来, UVM的Factory是通过多态和泛型来实现的, 跟普通的Factory比起来要复杂很多. 平心而论, 如果不需要支持重载的话, Factory实现的起来会简单很多. 我在最前面实现了一个"乞丐版"Factory, 各位可以考虑下加入泛型特性, 写出一个比较实用的Factory来, 不考虑重载的话应该也是挺简单的.
 
